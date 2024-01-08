@@ -72,7 +72,7 @@ def opsi_boking():
      
 def opsi_pesan():
     '''opsi pesan'''
-    paket_atau_satuan = input("Paket atau satuan: ")
+    paket_atau_satuan = input("\nPaket atau satuan: ")
     if paket_atau_satuan == "satuan" or paket_atau_satuan == "Satuan":       
         jenisPesanan = input("\nsilahkan mau pesan makan/minum : ".upper())
         print(f"\n{'Menu':<20}  {'Harga':<16}\n")
@@ -91,7 +91,7 @@ def opsi_pesan():
             print(f"{menu:<30} Rp.{harga:<18}")
         
 def pesanMakan():    
-    '''pesanan makan funtion'''
+    '''pesanan == makan'''
     if noPesanan == 1 :
         rekap_pesanan.append(f"Bakso x{jumlahPesan}")
         totalMakan = 15000 * jumlahPesan
@@ -132,10 +132,12 @@ def pesanMakan():
         rekap_pesanan.append(f"Hot dog x{jumlahPesan}")
         totalMakan = 18000 * jumlahPesan
         rekap_bayar.append(totalMakan)
+    else:
+        print("Periksa inputan anda")
     return noPesanan,jumlahPesan
 
 def pesanMinum():
-    '''pesan minum function'''
+    '''pesan == minum'''
     if noPesanan == 1 :
         rekap_pesanan.append(f"Ice tea x{jumlahPesan}")
         totalMinum = 5000 * jumlahPesan
@@ -168,9 +170,11 @@ def pesanMinum():
         rekap_pesanan.append(f"Es kelapa x{jumlahPesan}")
         totalMinum = 6000 * jumlahPesan
         rekap_bayar.append(totalMinum)
+    else:
+        print("Periksa inputan anda")
         
 def pesan_paket():
-    '''jika pesan paket'''
+    '''pesan == paket'''
     if noPesanan == 1:
         rekap_pesanan.append(f"Bakso & es teh manis x{jumlahPesan}")
         totalPaket = 18000 * jumlahPesan
@@ -187,10 +191,11 @@ def pesan_paket():
         rekap_pesanan.append(f"Kwetiau & orange jus x{jumlahPesan}")
         totalPaket = 15000 * jumlahPesan
         rekap_bayar.append(totalPaket)
+    else:
+        print("Periksa inputan anda")
         
-    
 def pembayaran():
-    '''pembayaran function'''
+    '''fungsi untuk pembayaran'''
     print("-"*45)
     pembayaran = print("Pilihan Pembayarn\n1.virtual Account\n2.Cash\n3.Transfer")
     pembayaran = int(input("\nSilahkan Pilih No Pembayaran = "))
@@ -217,14 +222,15 @@ def pembayaran():
             print("-"*45)
     else:
         print("Periksa inputan anda")
-   
+
+
 # main program
 namaPembeli = input("nama: ".upper())
 os.system('cls')
 
-print(45*"~")
+print(45*"-")
 print("| resto kami menyedikan 2 opsi pemesanan |".upper().center(45))
-print(45*"~")
+print(45*"-")
 print("1.Booking\n2.Pesan\n".upper())
 opsi = input("Booking Atau Pesan? => ")
 header()
@@ -250,16 +256,16 @@ elif opsi == "pesan" or opsi == "Pesan":
         elif pesananTambahan == "t" or pesananTambahan == "T":
             break
         else:
-            prit("NOTE: Periksa inputan anda")
-            prit("-"*45)
+            print("NOTE: Periksa inputan anda")
+            print("-"*45)
             continue
         
     # hasil  orderan
     total_bayar = sum(rekap_bayar)
-    format_pesanan = ",".join(rekap_pesanan)
-    
+    format_pesanan = ", ".join(rekap_pesanan)
+        
     print(45*"\033[0;34m_")
-    print("rekap pesanan".center(45).upper()) 
+    print("rekap pesanan".center(45).upper())
     print(f"=> saudara\i {namaPembeli} <= ".center(45).upper()) 
     print("-"*45)
     print(f"\033[0;39mpesanan       = {format_pesanan}")
@@ -281,6 +287,8 @@ elif opsi == "pesan" or opsi == "Pesan":
         pembayaran()
         konfirmasi = input("Konfirmasi pembayaran [y/t]: ")
         if konfirmasi == "y" or konfirmasi == "Y" :
+            print('virtual account: 02163981')
+            print('Nama: maghfurhasani')
             break
         else :
             True 
